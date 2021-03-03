@@ -1,6 +1,20 @@
 # scenicspot
 
-> A Vue.js project
+串接交通部觀光景點 API [MOTC Transport API V2](https://ptx.transportdata.tw/MOTC?t=Tourism&v=2)
+
+- 全部景點查詢
+    - route為`/scenicSpot`
+    - 串接 [get /v2/Tourism/ScenicSpot]()
+        - 一次取得30個
+        - 網頁滑到底再載入額外30個景點，直到沒有更多
+- 縣市景點查詢
+    - route為`/scenicSpot/{City}`
+    - 串接 [GET /v2/Tourism/ScenicSpot/{City}]()
+        - 一次取得30個
+        - 網頁滑到底再載入額外30個景點，直到沒有更多
+- 切換頁面按鈕
+    - 所有頁面切換至全部景點查詢及縣市景點查詢
+    - 使用navbar達成
 
 ## Build Setup
 
