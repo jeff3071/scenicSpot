@@ -120,6 +120,15 @@ export default {
 .second-list {
     display: none;
 }
+.second-list > ul > li {
+    width: 150px;
+    height: 40px;
+    border-radius: 5%;
+}
+
+.second-list > ul {
+  margin-top: 10px;
+}
 
 #first-list:hover > .second-list {
     display: block;
@@ -137,10 +146,15 @@ ul {
 ul#nav > li {
     display: inline-block;
     position: relative;
+    width: 150px;
+    height: 40px;
+    border-radius: 5%;
 }
 
 .Navbar {
     height: 50px;
+    width: 50%;
+    margin-left: 50px;
 }
 
 li {
@@ -155,7 +169,7 @@ a {
 }
 
 li:hover {
-    background-color: #ccc;
+    background-color: rgb(199, 183, 183);
 }
 
 </style>
