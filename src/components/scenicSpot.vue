@@ -1,14 +1,20 @@
 <template>
-  <div class="hello container">
+  <div class="container">
     <Navbar></Navbar>
-    <ul>
-      <li v-for="spot in spotlist" :key="spot.ID + spot.Name">
-        <div class="row">
-          <div class="col-3">{{ spot.Name }}</div>
-          <div class="col-9">{{ spot.Description }}</div>
-        </div>
-      </li>
-    </ul>
+    <div v-for="spot in spotlist" :key="spot.ID + spot.Name">
+      <b-card :title="spot.Name" :sub-title="spot.Address +' ('+spot.Phone+')'"
+        tag="article"
+        style="text-align:left;"
+        class="mb-2"
+      >
+        <b-card-text>
+          {{ spot.Description }}
+        </b-card-text>
+        <b-card-text>
+          {{ spot.TicketInfo }}
+        </b-card-text>
+      </b-card>
+    </div>
   </div>
 </template>
 
@@ -44,7 +50,7 @@ export default {
       let vm = this
       axios.get(url)
         .then(function (res) {
-          console.log(res.data.length)
+          console.log(res.data)
           if (res.data.length !== 0) {
             for (let spot in res.data) {
               vm.spotlist.push(res.data[spot])
@@ -82,10 +88,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-li {
-  list-style-type: none;
-  border: 1px #ccc solid;
-}
-</style>

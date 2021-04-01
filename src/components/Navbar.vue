@@ -1,19 +1,20 @@
 <template>
-    <div class="Navbar">
-        <ul id="nav">
-            <li><router-link to="/">首頁</router-link></li>
-            <li><router-link to="/scenicSpot">全部景點</router-link></li>
-            <li id="first-list"><router-link to="/">依城市查詢</router-link>
-                <div class="second-list">
-                    <ul>
-                        <li v-for="city in citylist" :key="city.key">
-                            <router-link :to="{ name: 'scenicSpot', params: { id: city.key}}">{{ city.name }}</router-link>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
+  <div class="Navbar">
+      <div>
+        <b-navbar type="dark" variant="dark">
+          <b-navbar-nav>
+            <b-nav-item>首頁</b-nav-item>
+            <b-nav-item to="/scenicSpot">全部景點</b-nav-item>    
+
+            <b-nav-item-dropdown text="依城市查詢" right>
+              <b-dropdown-item v-for="city in citylist" :key="city.key" :to="{ name: 'scenicSpot', params: { id: city.key}}">
+                {{city.name}}
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
+          </b-navbar-nav>
+        </b-navbar>
+      </div>
+  </div>
 </template>
 
 <script>
@@ -117,59 +118,10 @@ export default {
 </script>
 
 <style scoped>
-.second-list {
-    display: none;
+li a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #6c757d;
 }
-.second-list > ul > li {
-    width: 150px;
-    height: 40px;
-    border-radius: 5%;
-}
-
-.second-list > ul {
-  margin-top: 10px;
-}
-
-#first-list:hover > .second-list {
-    display: block;
-    z-index: 9999;
-}
-
-ul {
-    display: block;
-    padding: 0;
-    list-style: none;
-    position: absolute;
-    z-index: 999;
-}
-
-ul#nav > li {
-    display: inline-block;
-    position: relative;
-    width: 150px;
-    height: 40px;
-    border-radius: 5%;
-}
-
-.Navbar {
-    height: 50px;
-    width: 50%;
-    margin-left: 50px;
-}
-
-li {
-    width: 100px;
-    background-color: white;
-}
-
-a {
-    font-size: 20px;
-    color: black;
-    text-decoration:none;
-}
-
-li:hover {
-    background-color: rgb(199, 183, 183);
-}
-
 </style>
