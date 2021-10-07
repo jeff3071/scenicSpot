@@ -17,7 +17,7 @@
     - 使用navbar達成
 
 
-架設在Netlify上 https://elated-lamarr-67db74.netlify.app/#/
+架設在Netlify上 https://scenicspot.netlify.app
 
 ## Build Setup
 
