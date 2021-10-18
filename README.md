@@ -16,6 +16,9 @@
     - 所有頁面切換至全部景點查詢及縣市景點查詢
     - 使用navbar達成
 
+
+架設在Netlify上 https://scenicspot.netlify.app
+
 ## Build Setup
 
 ``` bash
