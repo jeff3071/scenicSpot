@@ -10,7 +10,7 @@ export default {
   name: 'index',
   data () {
     return {
-      message: '歡迎來到景點查詢'
+      message: '縣市查詢景點'
     }
   }
 }

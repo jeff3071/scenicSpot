@@ -11,6 +11,7 @@
                 {{city.name}}
               </b-dropdown-item>
             </b-nav-item-dropdown>
+            <b-nav-item to="/myspot">我的景點</b-nav-item>   
           </b-navbar-nav>
         </b-navbar>
       </div>

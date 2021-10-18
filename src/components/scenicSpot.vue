@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Navbar></Navbar>
-    <div v-for="spot in spotlist" :key="spot.ID + spot.Name">
+    <div v-for="(spot,index) in spotlist" :key="spot.ID + spot.Name">
       <b-card :title="spot.Name" :sub-title="spot.Address +' ('+spot.Phone+')'"
         tag="article"
         style="text-align:left;"
@@ -13,6 +13,7 @@
         <b-card-text>
           {{ spot.TicketInfo }}
         </b-card-text>
+        <b-button v-if="saved_spot_id.indexOf(spot.ID) == -1" :key="index" @click="setfavorite(index)">加入我的景點</b-button>
       </b-card>
     </div>
   </div>
@@ -25,7 +26,8 @@ export default {
     return {
       spotlist: [],
       city: this.$route.params.id,
-      load: true
+      load: true,
+      saved_spot_id: []
     }
   },
   methods: {
@@ -59,9 +61,30 @@ export default {
             vm.load = false
           }
         })
+    },
+    setfavorite(index) {
+      let temp = []
+      if(localStorage.myspot != undefined)
+        temp = JSON.parse(localStorage.myspot)
+      
+      if(this.saved_spot_id.indexOf(this.spotlist[index].ID) == -1){
+        temp.push(this.spotlist[index])
+        this.saved_spot_id.push(this.spotlist[index].ID)
+      }
+
+      localStorage.myspot = JSON.stringify(temp)
+      // console.log(localStorage.myspot)
     }
   },
   created () {
+    let temp = []
+    if(localStorage.myspot != undefined)
+      temp = JSON.parse(localStorage.myspot)
+    for(let i in temp){
+      this.saved_spot_id.push(temp[i].ID)
+    }
+
+
     if (this.$route.params.id === undefined) {
       this.getspotinfo()
       this.load = true
